@@ -1,0 +1,91 @@
+{
+  "name": "capimmusic",
+  "version": "2.0.0",
+  "description": "CapimMusic - player de m\u00fasica P&B",
+  "main": "main.js",
+  "author": {
+    "name": "CapimMusic",
+    "email": "capimmusic@users.noreply.github.com"
+  },
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win",
+    "predist": "node fetch-ytdlp.js"
+  },
+  "dependencies": {
+    "electron-updater": "^6.8.9",
+    "youtubei.js": "^10.5.0"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3",
+    "resedit": "^1.7.2"
+  },
+  "build": {
+    "appId": "app.capimmusic",
+    "productName": "CapimMusic",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "login.html",
+      "shell.css",
+      "shell.js",
+      "logo.png",
+      "icon.ico",
+      "icon.png",
+      "package.json"
+    ],
+    "win": {
+      "icon": "icon.ico",
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "extraResources": [
+        {
+          "from": "bin/yt-dlp.exe",
+          "to": "yt-dlp.exe"
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "artifactName": "CapimMusic-Setup.${ext}"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "capimmm",
+        "repo": "CapimMusic"
+      }
+    ],
+    "portable": {
+      "artifactName": "CapimMusic-Portable.${ext}"
+    },
+    "afterPack": "after-pack.js",
+    "linux": {
+      "icon": "icon.png",
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "AudioVideo",
+      "maintainer": "CapimMusic <capimmusic@users.noreply.github.com>",
+      "synopsis": "Player de m\u00fasica em preto e branco",
+      "artifactName": "CapimMusic-Linux.${ext}",
+      "extraResources": [
+        {
+          "from": "bin/yt-dlp_linux",
+          "to": "yt-dlp"
+        }
+      ]
+    }
+  },
+  "homepage": "https://github.com/capimmm/CapimMusic"
+}

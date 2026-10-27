@@ -1,0 +1,19 @@
+:root{--e:cubic-bezier(.22,1,.36,1);--s:linear(0,.009,.035 2.1%,.141,.281 6.7%,.723 12.9%,.938 16.7%,1.017,1.077,1.121,1.149 24.3%,1.159,1.163,1.161,1.154 29.9%,1.129 32.8%,1.051 39.6%,1.017 43.1%,.991,.977 51%,.974 53.8%,.975 57.1%,.997 69.8%,1.003 76.9%,1.004 83.8%,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:transparent;overflow:hidden}
+body{color:#fff;font:14px 'Segoe UI Variable Display','Segoe UI',Inter,system-ui,sans-serif;user-select:none}
+#app{position:fixed;inset:0;border-radius:16px;overflow:hidden;border:1px solid #2a2a2a;background:#000;transform:translateZ(0);animation:open .8s var(--e) backwards}
+#app::before{content:'';position:absolute;inset:-25%;z-index:-2;background:radial-gradient(38% 38% at 18% 28%,#ffffff12,transparent),radial-gradient(34% 34% at 82% 72%,#ffffff0c,transparent);animation:dr 26s ease-in-out infinite alternate;will-change:transform}
+@keyframes dr{to{transform:translate(7%,-6%) rotate(14deg) scale(1.18)}}@keyframes open{from{opacity:0;transform:scale(.965)}}
+.max #app{border-radius:0;border:0}
+#t{-webkit-app-region:drag;height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 0 0 20px;font-weight:800;letter-spacing:.42em;font-size:11px;position:relative;z-index:5}
+#t .br{display:flex;align-items:center}#t .br img{height:20px;margin-right:12px}
+#wc{display:flex;-webkit-app-region:no-drag;height:100%}
+#wc button{width:48px;height:100%;background:none;border:0;color:#999;cursor:pointer;display:grid;place-items:center;transition:background .25s,color .25s}
+#wc button:hover{background:#ffffff1a;color:#fff}#wc button[data-w=close]:hover{background:#fff;color:#000}
+#wc svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.rz{position:absolute;z-index:100;-webkit-app-region:no-drag}.max .rz{display:none}
+.rz[data-d=n]{top:0;left:12px;right:12px;height:5px;cursor:ns-resize}.rz[data-d=s]{bottom:0;left:12px;right:12px;height:5px;cursor:ns-resize}
+.rz[data-d=e]{right:0;top:12px;bottom:12px;width:5px;cursor:ew-resize}.rz[data-d=w]{left:0;top:12px;bottom:12px;width:5px;cursor:ew-resize}
+.rz[data-d=ne]{top:0;right:0;width:12px;height:12px;cursor:nesw-resize}.rz[data-d=nw]{top:0;left:0;width:12px;height:12px;cursor:nwse-resize}
+.rz[data-d=se]{bottom:0;right:0;width:12px;height:12px;cursor:nwse-resize}.rz[data-d=sw]{bottom:0;left:0;width:12px;height:12px;cursor:nesw-resize}
